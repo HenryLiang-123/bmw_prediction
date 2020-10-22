@@ -146,7 +146,8 @@ model1 <- randomForest(price ~ Series +
 model1
 plot(model1)
 predval <- predict(model1, test_data, type = "class")
-plot((predval - test_data$price)) #error
+1 - sum((test_data$price-predval)^2)/sum((test_data$price-mean(test_data$price))^2) #r-squared
+plot((predval - test_data$price)) #error plot
 mean((predval - test_data$price)^2) #mse
 
 
